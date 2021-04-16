@@ -8,6 +8,7 @@ Refer the screenshots below.
 ***
 ### Connect to other apps
 This website can also get connected to other apps/websites using the API implemented(see the healthtracker/urls.py).
+***
 ### Usage
 ##### Run the server on your local machine
 ``` bash

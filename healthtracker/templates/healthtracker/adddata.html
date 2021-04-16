@@ -1,0 +1,32 @@
+{% extends "healthtracker/layout.html" %}
+
+{% block title %}
+    Health Tracker | Add Patient
+{% endblock %}
+
+{% block body %}
+    {% if message %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <form action="{% url 'adddata' %}" method="post" id="body-div-div" style="padding-left: 25px; padding-bottom:25px;">
+        <h2>Add Patient's details</h2>
+        <p>*Enter the registration number of the patient(format: REG2020xx) & enter the current values of the pulse rate and temp</p>
+        {% csrf_token %}
+        <div>
+            <input type="text" name="regnumber" placeholder="Registration Number" required class="input-form">
+        </div>
+        <div>
+            <input type="number" step="0.1" name="pulserate" placeholder="Pulse Rate" required class="input-form">
+        </div>
+        <div>
+            <input type="number" step="0.1" name="temperature" placeholder="Temperature" required class="input-form">
+        </div>
+        <div>
+            <input type="submit" class="btn btn-success">
+            <input type="reset" class="btn btn-primary">
+        </div>
+    </form>
+{% endblock %}

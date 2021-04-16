@@ -1,0 +1,37 @@
+{% extends "healthtracker/layout.html" %}
+
+{% block title %}
+    Health Tracker | Add Patient
+{% endblock %}
+
+{% block body %}
+
+    <form action="{% url 'addpatient' %}" method="post" id="body-div-div" style="padding-left: 25px; padding-bottom:25px;">
+        {% csrf_token %}
+        <h2>Add New Patient</h2>
+        {% if message %}
+            <div class="alert alert-primary">
+                {{ message }}
+            </div>
+        {% endif %}
+        <p>*Enter the details of the patient in the form given below:</p>
+        <h4>Personal details</h4>
+        <input type="text" placeholder="First Name" name="fname" required class="input-form">
+        <input type="text" placeholder="Last Name" name="lname" required class="input-form">
+        <br>
+        <input type="number" placeholder="roomnumber" name="rnumber" required class="input-form">
+        <div>
+            <h5>Gender:</h5>
+            Male <input type="radio" name="gender" placeholder="male" value="male" required class="radio-btn">
+            Female <input type="radio" name="gender" placeholder="female" value="female" required class="radio-btn">
+            Not to mention <input type="radio" name="gender" value="ntm" required class="radio-btn">
+        </div>
+        <div>
+            <h4>Address</h4>
+            <input type="text" maxlength="50" name="state" placeholder="State" required class="input-form">
+            <input type="text" maxlength="255" name="streetaddress" placeholder="Street Address" required class="input-form">
+        </div>
+        <input type="submit" class="btn btn-success">
+        <input type="reset" class="btn btn-primary">
+    </form>
+{% endblock %}

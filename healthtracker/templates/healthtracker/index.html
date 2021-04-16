@@ -1,0 +1,25 @@
+{% extends "healthtracker/layout.html" %}
+
+{% block title %}
+    Health Tracker | Home
+{% endblock %}
+
+{% block body %}
+    <div id="body-div">
+        <div id="body-div-div">
+            <h2>Welcome to Health Tracker</h2>
+            <br>
+            <p class="body-p">We know you care about your loved one's, so here's you can keep a check on your loved one's health!</p>
+            <p>All you have to do is go to the <b><a class="body-links" href="{% url 'checkhealth' %}">Check Health</a></b> tab and enter the registration number recieved.</p>
+            <p>If you are admin then head to the <b><a class="body-links" href="{% url 'admin-login' %}">Admin Login</a></b> tab.</p>
+            <div>
+                <h4>We request you to kindly take precautions against COVID-19, for more information on COVID-19:</h4>
+                <ul style="list-style: none; color: #808080">
+                    <li><b>Maintain at least a 1-metre distance between yourself and others.</b></li>
+                    <li><b>Make wearing a mask a normal part of being around other people.</b></li>
+                    <li><b>Wash your hands regularly for about 20 seconds.</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

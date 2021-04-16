@@ -1,0 +1,94 @@
+{% extends "healthtracker/layout.html" %}
+
+{% block body %}
+    <div id="patient-details">
+        <h2>{{ data.0.Patient.FirstName }} {{ data.0.Patient.LastName }}</h2>
+        <div style="margin: 0 20px 0 20px; color: #808080">
+            <span style="font-size: 20px;">Registration No. : {{ data.0.Patient.RegNumber}}</span>
+            <span style="font-size: 20px; margin-left: 200px">Gender: {{ data.0.Patient.Gender }}</span>
+            <div>
+                Room No. : {{ data.0.Patient.RoomNo }}
+            </div>
+            Addmitted on: {{ data.0.Patient.TimeOfAdmission }}
+        </div>
+    </div>
+    <div id="table-div">
+        <h2 style="color: #696969">Health Status</h2>
+        <table id="data-table" class="table table-striped table-dark">
+        </table>
+    </div>
+    <h3 style="margin-left: 100px; color: #696969">Graphs:</h3>
+    <div id="pulse-chart-div">
+        <canvas id="pulse-chart" width="400" height="400"></canvas>
+    </div>
+    <div id="temp-chart-div">
+        <canvas id="temp-chart" width="400" height="400"></canvas>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            displaydata("{{ data.0.Patient.RegNumber}}")
+
+            var ctx = document.getElementById('pulse-chart').getContext('2d');
+            var linechart = new Chart(ctx, {
+               type: 'line',
+               data: {
+                   labels: ["{{ data.4.Time }}", "{{ data.3.Time }}", "{{ data.2.Time }}", "{{ data.1.Time }}", "{{ data.0.Time }}"],
+                   datasets: [
+                       {
+                           label: "Pulse Rate",
+                           data: ["{{ data.4.PulseRate }}", "{{ data.3.PulseRate }}", "{{ data.2.PulseRate }}", "{{ data.1.PulseRate }}", "{{ data.0.PulseRate }}"],
+                           backgroundColor: "white",
+                           fill: false,
+                           pointBorderColor: "rgba(75,192,192,1)",
+                           pointBackgroundColor: "rgba(75,192,192,1)",
+                           borderColor: "#ffa600"
+                       }
+                   ]
+               },
+               options: {
+                   showLines: true,
+                   spanGaps: false,
+                   scales: {
+                       yAxes: [{
+                           ticks: {
+                               min: Math.min({{ data.4.PulseRate }}, {{ data.3.PulseRate }}, {{ data.2.PulseRate }}, {{ data.1.PulseRate }}, {{ data.0.PulseRate }}) - 10,
+                               max: Math.max({{ data.4.PulseRate }}, {{ data.3.PulseRate }}, {{ data.2.PulseRate }}, {{ data.1.PulseRate }}, {{ data.0.PulseRate }}) + 10
+                           }
+                       }]
+                   }
+               }
+            });
+            var ctx2 = document.getElementById('temp-chart').getContext('2d');
+            var tempchart = new Chart(ctx2, {
+               type: 'line',
+               data: {
+                   labels: ["{{ data.4.Time }}", "{{ data.3.Time }}", "{{ data.2.Time }}", "{{ data.1.Time }}", "{{ data.0.Time }}"],
+                   datasets: [
+                       {
+                           label: "Temperature",
+                           data: ["{{ data.4.Temperature }}", "{{ data.3.Temperature }}", "{{ data.2.Temperature }}", "{{ data.1.Temperature }}", "{{ data.0.Temperature }}"],
+                           backgroundColor: "white",
+                           fill: false,
+                           pointBorderColor: "rgba(75,192,192,1)",
+                           pointBackgroundColor: "rgba(75,192,192,1)",
+                           borderColor: "#ffa600",
+                       }
+                   ],
+               },
+                options: {
+                   scales: {
+                       yAxes: [{
+                           ticks: {
+                               min: 97,
+                               max: Math.max({{ data.4.Temperature }}, {{ data.3.Temperature }}, {{ data.2.Temperature }}, {{ data.1.Temperature }}, {{ data.0.Temperature }}) + 1
+                           }
+                       }]
+                   }
+                }
+            });
+        })
+    </script>
+{% endblock %}

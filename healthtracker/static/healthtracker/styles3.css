@@ -1,0 +1,83 @@
+#patient-details{
+    margin: 10px 50px 10px 50px;
+    padding: 25px;
+    box-shadow: 3px 3px 7px 6px #808080;
+    background-color: white;
+    border-radius: 15px;
+}
+
+#table-div
+{
+    margin: 50px 100px 50px 100px
+}
+
+#container{
+    margin: 15px 75px 15px 75px;
+}
+
+body{
+    background-image: url("FREE MEDICAL VECTOR-01.jpg");
+    background-attachment: scroll;
+}
+
+#temp-chart-div{
+    width: 500px;
+    float: left;
+    margin: 0 25px 50px 125px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 25px;
+}
+
+#pulse-chart-div{
+    width: 500px;
+    float: left;
+    margin: 0 25px 50px 125px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 25px;
+}
+
+#body-div{
+    text-align: center;
+}
+
+#body-div-div{
+    margin: 4% 15% 15% 15%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.body-links{
+    color: royalblue;
+    text-decoration: none;
+}
+
+.body-links:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.body-p{
+    font-size: 30px;
+}
+
+#layout-navbar{
+    font-size: 17px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.input-form
+{
+    border-radius: 5px;
+    padding: 5px;
+    margin: 7px;
+}
+
+.radio-btn
+{
+    margin: 10px;
+    margin-left: 0;
+}

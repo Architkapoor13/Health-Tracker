@@ -1,0 +1,24 @@
+{% extends "healthtracker/layout.html" %}
+
+{% block title %}
+    Health Tracker | Admin Login
+{% endblock %}
+
+{% block body %}
+    <div style="margin: 10px 10px 10px 10px;" id="body-div-div" style="text-align: center;">
+        <h2>Admin Login</h2>
+        {% if message %}
+            <div id="alert alert-primary">{{ message }}</div>
+        {% endif %}
+        <form action="{% url 'admin-login' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group" style="margin: 5px 5px 15px 5px">
+                <input autofocus class="form-control input-form" type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group" style="margin: 5px 5px 5px 5px">
+                <input class="form-control input-form" type="password" name="password" placeholder="Password">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Login">
+        </form>
+    </div>
+{% endblock %}

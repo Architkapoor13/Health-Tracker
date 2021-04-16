@@ -1,0 +1,22 @@
+{% extends "healthtracker/layout.html" %}
+
+{% block title %}
+    Health Tracker | Check Health
+{% endblock %}
+
+{% block body %}
+    <div id="body-div-div" style="text-align: center">
+        <h3>Check Status</h3>
+        {% if message %}
+            <div class="alert alert-primary">{{ message }}</div>
+        {% endif %}
+        <p>*Enter the Registration Number(format: REG2020xx) provided by the hospital staff to check the health status.</p>
+        <form action="{% url 'checkhealth' %}" method="post">
+            {% csrf_token %}
+            Registration Number: <input type="text" name="regnumber" class="input-form" maxlength="11" placeholder="REG2020xx">
+            <input type="submit" class="btn btn-primary">
+        </form>
+        <br>
+        <h5 style="color:red;">We care about your loved one's, keep status of your loved ones from any where.</h5>
+    </div>
+{% endblock %}
